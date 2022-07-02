@@ -43,6 +43,8 @@ Map<String, Document>, где ключ типа String - это имя доку�
         File[] listOfFiles = folder.listFiles();//выводит имена файлов
         if (listOfFiles != null) {
             int count = 0;
+            int countValidFiles = 0;
+            int countInvalidFiles = 0;
             int limit = sc.nextInt();
             Map<String, Document> docMap = new HashMap<>();
             for (File file : listOfFiles) {
@@ -52,13 +54,15 @@ Map<String, Document>, где ключ типа String - это имя доку�
                 if (file.isFile()) {
                     System.out.println(file.getName());
                 }
-                if (file.canRead()) {
-                    System.out.println("this file can be read");
-                }
                 if (!checkExtension(file)) {
                     System.out.println("file has wrong extension");
+                    countInvalidFiles++;
+                    continue;
                 }
-
+                if (file.canRead()) {
+                    System.out.println("this file can be read");
+                    countValidFiles++;
+                }
                 ArrayList<String> docNames = new ArrayList<>();
                 ArrayList<String> mails = new ArrayList<>();
                 ArrayList<String> phoneNums = new ArrayList<>();
@@ -82,8 +86,11 @@ Map<String, Document>, где ключ типа String - это имя доку�
                 fileReader.close();
             }
             System.out.println(docMap);
+            System.out.println("valid files: " + countValidFiles);
+            System.out.println("invalid files: " + countInvalidFiles);
         }
     }
+
 
     public static boolean checkExtension(File file) {
         String fileName = file.getName().toLowerCase();
