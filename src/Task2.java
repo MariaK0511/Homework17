@@ -51,6 +51,7 @@ Map<String, Document>, где ключ типа String - это имя доку�
                 if (count == limit) {
                     break;
                 }
+                count++;
                 if (file.isFile()) {
                     System.out.println(file.getName());
                 }
@@ -67,7 +68,6 @@ Map<String, Document>, где ключ типа String - это имя доку�
                 ArrayList<String> mails = new ArrayList<>();
                 ArrayList<String> phoneNums = new ArrayList<>();
                 Document document = new Document(docNames, mails, phoneNums);
-
                 FileReader fileReader = new FileReader(file);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
                 String line;
@@ -81,7 +81,6 @@ Map<String, Document>, где ключ типа String - это имя доку�
                     }
                 }
                 docMap.put(file.getName().replaceAll(".txt", ""), document);
-                count++;
                 bufferedReader.close();
                 fileReader.close();
             }
