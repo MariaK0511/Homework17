@@ -1,7 +1,4 @@
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
